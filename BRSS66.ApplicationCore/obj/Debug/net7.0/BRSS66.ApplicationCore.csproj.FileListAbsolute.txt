@@ -1,0 +1,12 @@
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.ApplicationCore\bin\Debug\net7.0\BRSS66.ApplicationCore.deps.json
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.ApplicationCore\bin\Debug\net7.0\BRSS66.ApplicationCore.dll
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.ApplicationCore\bin\Debug\net7.0\BRSS66.ApplicationCore.pdb
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.ApplicationCore\obj\Debug\net7.0\BRSS66.ApplicationCore.csproj.AssemblyReference.cache
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.ApplicationCore\obj\Debug\net7.0\BRSS66.ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.ApplicationCore\obj\Debug\net7.0\BRSS66.ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.ApplicationCore\obj\Debug\net7.0\BRSS66.ApplicationCore.AssemblyInfo.cs
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.ApplicationCore\obj\Debug\net7.0\BRSS66.ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.ApplicationCore\obj\Debug\net7.0\BRSS66.ApplicationCore.dll
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.ApplicationCore\obj\Debug\net7.0\refint\BRSS66.ApplicationCore.dll
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.ApplicationCore\obj\Debug\net7.0\BRSS66.ApplicationCore.pdb
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.ApplicationCore\obj\Debug\net7.0\ref\BRSS66.ApplicationCore.dll

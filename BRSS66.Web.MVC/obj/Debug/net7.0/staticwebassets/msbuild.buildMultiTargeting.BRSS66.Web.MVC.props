@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BRSS66.Web.MVC.props" />
+</Project>

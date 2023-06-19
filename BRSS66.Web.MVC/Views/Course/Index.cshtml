@@ -1,0 +1,65 @@
+@model List<BRSS66.ApplicationCore.Entities.Course>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<table id="myTable" class="table table-info table-striped">
+    <thead class="table-dark" style="color: white">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Credits
+        </th>
+        <th>
+            Student
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Credits)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Student)
+            </td>*@
+            <td>
+                @*<a class="btn-outline-success btn-sm" href="/Enrollment/AddNewStudent/@item.Id">Add student</a> |*@
+                <a class="btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn-outline-primary btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a class="btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>|
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+@*
+<a class="btn btn-primary btn-sm" data-mdb-toggle="modal" data-mdb-target="#exampleModal">Match Course & Student </a>
+*@
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}

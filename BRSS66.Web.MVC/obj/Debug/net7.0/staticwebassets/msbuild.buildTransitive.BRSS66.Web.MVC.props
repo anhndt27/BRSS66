@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\BRSS66.Web.MVC.props" />
+</Project>

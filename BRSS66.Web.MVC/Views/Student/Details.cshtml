@@ -1,0 +1,45 @@
+@model BRSS66.ApplicationCore.ViewModels.Response.StudentResponse
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.Raw(@ViewBag.Alert)
+            </div>
+        </div>
+    </div>
+    <div class="shadow-inner">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Code)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Code)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Course)
+            </dt>
+            <dd class="col-sm-2">
+                @Html.DisplayFor(model => model.Course)
+            </dd>
+        </dl>
+    </div>
+    <div class="neo-left">
+        @*<a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>*@ |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\bin\Debug\net7.0\BRSS66.Infrastructure.deps.json
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\bin\Debug\net7.0\BRSS66.Infrastructure.dll
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\bin\Debug\net7.0\BRSS66.Infrastructure.pdb
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\bin\Debug\net7.0\BRSS66.ApplicationCore.dll
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\bin\Debug\net7.0\BRSS66.Database.dll
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\bin\Debug\net7.0\BRSS66.ApplicationCore.pdb
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\bin\Debug\net7.0\BRSS66.Database.pdb
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\obj\Debug\net7.0\BRSS66.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\obj\Debug\net7.0\BRSS66.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\obj\Debug\net7.0\BRSS66.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\obj\Debug\net7.0\BRSS66.Infrastructure.AssemblyInfo.cs
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\obj\Debug\net7.0\BRSS66.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\obj\Debug\net7.0\BRSS66.Infrastructure.csproj.CopyComplete
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\obj\Debug\net7.0\BRSS66.Infrastructure.dll
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\obj\Debug\net7.0\refint\BRSS66.Infrastructure.dll
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\obj\Debug\net7.0\BRSS66.Infrastructure.pdb
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Infrastructure\obj\Debug\net7.0\ref\BRSS66.Infrastructure.dll
