@@ -2,11 +2,9 @@ using BRSS66.ApplicationCore.Entities;
 using BRSS66.ApplicationCore.Interfaces.IRepositorys;
 using BRSS66.ApplicationCore.Interfaces.IServices;
 using BRSS66.ApplicationCore.Mapper;
-using BRSS66.ApplicationCore.Mapper.AutoMapper;
 using BRSS66.ApplicationCore.Models;
 using BRSS66.ApplicationCore.ViewModels.Request;
 using BRSS66.ApplicationCore.ViewModels.Response;
-using Microsoft.AspNetCore.Http;
 
 namespace BRSS66.Infrastructure.Services;
 
