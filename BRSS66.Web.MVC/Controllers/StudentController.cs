@@ -1,5 +1,8 @@
+using BRSS66.ApplicationCore.Business;
+using BRSS66.ApplicationCore.Enum;
 using BRSS66.ApplicationCore.Interfaces.IServices;
 using BRSS66.ApplicationCore.Models;
+using BRSS66.ApplicationCore.ViewModels.Request;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BRSS66.Web.MVC.Controllers;
@@ -58,5 +61,90 @@ public class StudentController : Controller
             Console.WriteLine(e);
             throw;
         }
+    }
+    
+    public ActionResult Create()
+    {
+        return View();
+    }
+
+    // POST: UserManagerController/Create
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(StudentRequest entity)
+    {
+        try
+        {
+            if (await _studentServices.CreateAsync(entity))
+            {
+                ViewBag.Alert = AlertsHelper.ShowAlert(Alerts.Success, "Create Ok!")!;
+            }
+            else ViewBag.Alert = AlertsHelper.ShowAlert(Alerts.Danger, "Unknown error")!;
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError("",
+                $"Unable to save changes. Student Code is already exist!");
+            Console.WriteLine(ex);
+        }
+
+        return View(entity);
+    }
+    
+    public async Task<ActionResult> Edit(int id)
+    {
+        var res = await _studentServices.GetByIdAsync(id);
+        return View(res);
+    }
+
+    // POST: UserManagerController/Edit/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<ActionResult> Edit(int id,StudentRequest entity)
+    {
+        try
+        {
+            if (await _studentServices.UpdateAsync(id,entity))
+            {
+                ViewBag.Alert = AlertsHelper.ShowAlert(Alerts.Success, "Update Ok!")!;
+            }
+            else ViewBag.Alert = AlertsHelper.ShowAlert(Alerts.Danger, "Unknown error")!;
+            //return RedirectToAction(nameof(Index));
+        }
+        catch (Exception e)
+        {
+            ModelState.AddModelError("",
+                $"Unable to save changes. Student Code is already exist!");
+            Console.WriteLine(e);
+        }
+
+        return View();
+    }
+
+// GET: UserManagerController/Delete/5
+    public ActionResult Delete()
+    {
+        return View();
+    }
+
+// POST: UserManagerController/Delete/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<ActionResult> Delete(int id,StudentRequest entity)
+    {
+        try
+        {
+            if (await _studentServices.DeleteAsync(id,entity))
+            {
+                return RedirectToAction(nameof(Index), new { deleteFlag = true });
+            }
+            else ViewBag.Alert = AlertsHelper.ShowAlert(Alerts.Danger, "Remove faile")!;
+        }
+        catch (InvalidDataException)
+        {
+            return View();
+        }
+
+        return View();
     }
 }

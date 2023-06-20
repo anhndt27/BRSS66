@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "S+GBCgfs8YTvFRHtxO1rKWg7iyePjHohQq3bH8D0LsgEl4bHi9ahsTw5i5PmLl68IFwbxtAeK2/Gzaz9GsjIIw==",
+  "dgSpecHash": "pICtRHvfbhMS//VIQ3xEu4OhXqQiHzOf1J++dIuhmPj7Hr2QgF3+iMeYo8D9n4MEfdLtMTl+Ya3KG4LyqnfrCQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Hi\\Documents\\Workspace\\BRSS66\\BRSS66.ApplicationCore\\BRSS66.ApplicationCore.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\Hi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.5\\microsoft.aspnetcore.cryptography.keyderivation.7.0.5.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\7.0.5\\microsoft.aspnetcore.identity.entityframeworkcore.7.0.5.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\7.0.5\\microsoft.aspnetcore.identity.ui.7.0.5.nupkg.sha512",
+    "C:\\Users\\Hi\\.nuget\\packages\\microsoft.aspnetcore.owin\\7.0.5\\microsoft.aspnetcore.owin.7.0.5.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.5\\microsoft.entityframeworkcore.7.0.5.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.5\\microsoft.entityframeworkcore.abstractions.7.0.5.nupkg.sha512",

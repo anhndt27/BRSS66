@@ -21,7 +21,7 @@ public class StudentRepository : RepositoryBase<Student>, IStudentRepository
 
     public Task<List<Student>> GetPaging(JqueryDatatableParam param)
     {
-        var data = _context.Students.AsQueryable();
+        var data = _context.Students!.AsNoTracking().AsQueryable();
             // await _context.Students.ToListAsync();
             //(from student in _context.Students select student);
         if (!string.IsNullOrEmpty(param.SortColumn) && !string.IsNullOrEmpty(param.SortColumnDirection))

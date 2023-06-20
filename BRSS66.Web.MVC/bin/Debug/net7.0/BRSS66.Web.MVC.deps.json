@@ -666,6 +666,14 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Owin/7.0.5": {
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Owin.dll": {
+            "assemblyVersion": "7.0.5.0",
+            "fileVersion": "7.0.523.17410"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Razor.Language/6.0.11": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {
@@ -2862,6 +2870,7 @@
           "AutoMapper": "12.0.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.5",
           "Microsoft.AspNetCore.Identity.UI": "7.0.5",
+          "Microsoft.AspNetCore.Owin": "7.0.5",
           "Microsoft.Extensions.Identity.Core": "7.0.5"
         },
         "runtime": {
@@ -3317,6 +3326,13 @@
       "sha512": "sha512-OMq8uXQeoL82hlAT96OW4/dh9OalCWOF5G02vlBrZG2+9PREhkOFz9h8zTeqciXUUTSpr06BR18yjCPqOUJnmQ==",
       "path": "microsoft.aspnetcore.identity.ui/7.0.5",
       "hashPath": "microsoft.aspnetcore.identity.ui.7.0.5.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Owin/7.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-irEcBfCROjxaNxedXRxSPFYdrKyVZyxuXZQZF94ZxRHwnNUmenSorV/dr0l+JJW+QI6i/EgO03YHUXiEogT6YQ==",
+      "path": "microsoft.aspnetcore.owin/7.0.5",
+      "hashPath": "microsoft.aspnetcore.owin.7.0.5.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor.Language/6.0.11": {
       "type": "package",

@@ -22,9 +22,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Views\Account\" />
       <Folder Include="Views\Course\" />
       <Folder Include="Views\Enrollment\" />
-      <Folder Include="Views\Student\" />
     </ItemGroup>
 
 </Project>

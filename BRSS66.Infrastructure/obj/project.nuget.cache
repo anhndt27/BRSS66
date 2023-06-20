@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/9F3YnGNRSyD3znNYO8BxhgxEz03Ih+mrNVqKZszLcAh5AGA4l49o2zMgAVD5ZYuXX/qbz9Vwso4V/Lfk/Xmjg==",
+  "dgSpecHash": "PCDOgqdPUiLOH/Ob5dBJQeb26LwpWYlRcj9ABJ5l4jNqBD9R6mW90vO2iEWK/Hcf51sGnFsNKF7AcyvURtOliA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Hi\\Documents\\Workspace\\BRSS66\\BRSS66.Infrastructure\\BRSS66.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\Hi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.5\\microsoft.aspnetcore.cryptography.keyderivation.7.0.5.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\7.0.5\\microsoft.aspnetcore.identity.entityframeworkcore.7.0.5.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\7.0.5\\microsoft.aspnetcore.identity.ui.7.0.5.nupkg.sha512",
+    "C:\\Users\\Hi\\.nuget\\packages\\microsoft.aspnetcore.owin\\7.0.5\\microsoft.aspnetcore.owin.7.0.5.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.11\\microsoft.aspnetcore.razor.language.6.0.11.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\microsoft.build\\17.3.2\\microsoft.build.17.3.2.nupkg.sha512",

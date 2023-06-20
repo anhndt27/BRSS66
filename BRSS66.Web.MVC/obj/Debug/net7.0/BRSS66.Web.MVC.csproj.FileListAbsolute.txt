@@ -300,3 +300,4 @@ C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Web.MVC\obj\Debug\net7.0\refint\BR
 C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Web.MVC\obj\Debug\net7.0\BRSS66.Web.MVC.pdb
 C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Web.MVC\obj\Debug\net7.0\BRSS66.Web.MVC.genruntimeconfig.cache
 C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Web.MVC\obj\Debug\net7.0\ref\BRSS66.Web.MVC.dll
+C:\Users\Hi\Documents\Workspace\BRSS66\BRSS66.Web.MVC\bin\Debug\net7.0\Microsoft.AspNetCore.Owin.dll

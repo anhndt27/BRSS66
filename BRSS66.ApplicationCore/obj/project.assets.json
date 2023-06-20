@@ -91,6 +91,22 @@
           "buildMultiTargeting/Microsoft.AspNetCore.Identity.UI.targets": {}
         }
       },
+      "Microsoft.AspNetCore.Owin/7.0.5": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Microsoft.AspNetCore.Owin.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Owin.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.CSharp/4.7.0": {
         "type": "package",
         "compile": {
@@ -596,6 +612,21 @@
         "staticwebassets/V5/lib/jquery/dist/jquery.js",
         "staticwebassets/V5/lib/jquery/dist/jquery.min.js",
         "staticwebassets/V5/lib/jquery/dist/jquery.min.map"
+      ]
+    },
+    "Microsoft.AspNetCore.Owin/7.0.5": {
+      "sha512": "irEcBfCROjxaNxedXRxSPFYdrKyVZyxuXZQZF94ZxRHwnNUmenSorV/dr0l+JJW+QI6i/EgO03YHUXiEogT6YQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.owin/7.0.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net7.0/Microsoft.AspNetCore.Owin.dll",
+        "lib/net7.0/Microsoft.AspNetCore.Owin.xml",
+        "microsoft.aspnetcore.owin.7.0.5.nupkg.sha512",
+        "microsoft.aspnetcore.owin.nuspec"
       ]
     },
     "Microsoft.CSharp/4.7.0": {
@@ -1112,6 +1143,7 @@
       "AutoMapper >= 12.0.1",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 7.0.5",
       "Microsoft.AspNetCore.Identity.UI >= 7.0.5",
+      "Microsoft.AspNetCore.Owin >= 7.0.5",
       "Microsoft.Extensions.Identity.Core >= 7.0.5"
     ]
   },
@@ -1162,6 +1194,10 @@
             "version": "[7.0.5, )"
           },
           "Microsoft.AspNetCore.Identity.UI": {
+            "target": "Package",
+            "version": "[7.0.5, )"
+          },
+          "Microsoft.AspNetCore.Owin": {
             "target": "Package",
             "version": "[7.0.5, )"
           },
