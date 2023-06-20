@@ -8,6 +8,4 @@ public class JqueryDatatableParam
     public string? SearchValue { get; set; }
     public int PageSize { get; set; }
     public int Skip { get; set; }
-    public int TotalRecord { get; set; }
-    public int FilterRecord { get; set; }
 }
