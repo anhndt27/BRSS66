@@ -3,8 +3,9 @@
     "",
     "\\BRSS66.ApplicationCore",
     "\\BRSS66.Database",
-    "\\BRSS66.Web.MVC"
+    "\\BRSS66.Web.MVC",
+    "\\BRSS66.Web.MVC\\Controllers"
   ],
-  "SelectedNode": "\\BRSS66.Web.MVC\\Program.cs",
+  "SelectedNode": "\\BRSS66.Web.MVC\\Controllers\\StudentController.cs",
   "PreviewInSolutionExplorer": false
 }

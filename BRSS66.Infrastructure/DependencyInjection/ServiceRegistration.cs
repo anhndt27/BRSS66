@@ -1,3 +1,4 @@
+using BRSS66.ApplicationCore.DomainService;
 using BRSS66.ApplicationCore.Interfaces.IRepositorys;
 using BRSS66.ApplicationCore.Interfaces.IServices;
 using BRSS66.Infrastructure.Repositories;
@@ -11,6 +12,7 @@ public static class ServiceRegistration
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
         //DI Repository
+        services.AddTransient<IAuthenticationService, AuthenticationService>();
         services.AddTransient<ICourseRepository, CourseRepository>();
         services.AddTransient<IStudentRepository, StudentRepository>();
         services.AddTransient<IEnrollmentRepository, EnrollmentRepository>();
