@@ -13,13 +13,16 @@ namespace BRSS66.Web.MVC.Controllers
         {
             _authentication = authentication;
         }
-
+        
+        [HttpGet]
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterDto model)
         {
             if (ModelState.IsValid)

@@ -5,7 +5,7 @@
 @inject UserManager<AppUser> UserManager
 
 <ul class="navbar-nav">
-    @if (SignInManager.IsSignedIn(User))
+    @if (User.Identity!.IsAuthenticated)
     {
         <li class="nav-item">
             <a class="nav-item btn-outline-secondary" asp-area="" asp-controller="Student" asp-action="Index">List Student</a>
