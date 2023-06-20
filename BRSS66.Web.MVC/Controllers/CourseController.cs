@@ -1,9 +1,11 @@
 using BRSS66.ApplicationCore.Interfaces.IServices;
 using BRSS66.Infrastructure.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BRSS66.Web.MVC.Controllers;
 
+[Authorize]
 public class CourseController : Controller
 {
 

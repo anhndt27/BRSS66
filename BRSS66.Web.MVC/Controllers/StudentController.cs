@@ -3,10 +3,12 @@ using BRSS66.ApplicationCore.Enum;
 using BRSS66.ApplicationCore.Interfaces.IServices;
 using BRSS66.ApplicationCore.Models;
 using BRSS66.ApplicationCore.ViewModels.Request;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BRSS66.Web.MVC.Controllers;
 
+[Authorize]
 public class StudentController : Controller
 {
     public readonly IStudentServices _studentServices;
