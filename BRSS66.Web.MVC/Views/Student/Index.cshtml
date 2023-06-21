@@ -16,6 +16,7 @@
                            <th>Code</th>
                            <th>Course</th>
                            <th>Actions</th>
+                           <th>Delete</th>
                        </tr>
                    </thead>
                </table>
@@ -48,8 +49,11 @@
                { "data": "code", "name": "Code", "autoWidth": true },
                { "data": "course", "name": "Course", "autoWidth": true },
                {
-                   "render": function (data,row) { return "<a href='#' class='btn btn-danger' onclick=DeleteCustomer('" + row.id+ "'); >Delete</a>";   }
+                   "render": function (data,row) { return "<a href='#' class='btn btn-primary' onclick=Details('" + row.id+ "'); >Details</a>";   },
                },
+               {
+                   "render": function (data,row) { return "<a href='#' class='btn btn-danger' onclick=Delete('" + row.id+ "'); >Delete</a>";   }
+               }
            ]
        });
    });  

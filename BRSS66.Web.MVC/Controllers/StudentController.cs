@@ -40,7 +40,7 @@ public class StudentController : Controller
             var students = await _studentServices.GetDataAsync(param);
             var returnObject = new
             {
-                draw = param.Draw, recordsFiltered = students.Count(), recordsTotal = students.Count(), data = students
+                draw = param.Draw, recordsFiltered = students.Item2, recordsTotal = students.Item2, data = students.Item1
             };
             return Ok(returnObject);
         }

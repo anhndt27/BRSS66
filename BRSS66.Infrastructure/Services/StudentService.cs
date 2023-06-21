@@ -17,13 +17,14 @@ public class StudentService : IStudentServices
         _studentRepository = studentRepository;
     }
 
-    public async Task<List<StudentResponse>> GetDataAsync(JqueryDatatableParam param)
+    public async Task<(List<StudentResponse>, int)> GetDataAsync(JqueryDatatableParam param)
     {
         try
         {
             var ltsStudents = await _studentRepository.GetPaging(param);
-            List<StudentResponse> ltsStudentDto = ltsStudents.Select(s => s.MapToStudentResponse()).ToList();
-            return ltsStudentDto;
+            //List<StudentResponse> ltsStudentDto = ltsStudents.Item1.Select(s => s.MapToStudentResponse()).ToList();
+            //IQueryable<StudentResponse> lts = ltsStudents.Item1.AsQueryable().MapListStudentDto();
+            return (ltsStudents.Item1,ltsStudents.Item2);
         }
         catch (Exception e)
         {

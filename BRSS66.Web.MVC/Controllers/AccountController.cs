@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BRSS66.Web.MVC.Controllers
 {
-   
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         public readonly IAuthenticationService _authentication;
@@ -14,16 +14,14 @@ namespace BRSS66.Web.MVC.Controllers
         {
             _authentication = authentication;
         }
-        
+
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterDto model)
         {
             if (ModelState.IsValid)
@@ -42,14 +40,12 @@ namespace BRSS66.Web.MVC.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginDto model)
         {
             if (ModelState.IsValid)

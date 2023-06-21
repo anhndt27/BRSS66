@@ -11,5 +11,5 @@ public class StudentResponse
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     public IEnumerable<string?>? Enrollments { get; set; }
-    public IEnumerable<Course?>? Course { get; set; }
+    public string? Course { get; set; }
 }

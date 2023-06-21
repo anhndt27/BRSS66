@@ -7,7 +7,7 @@ namespace BRSS66.ApplicationCore.Interfaces.IServices;
 
 public interface IStudentServices
 {
-    Task<List<StudentResponse>> GetDataAsync(JqueryDatatableParam param);
+    Task<(List<StudentResponse>, int)> GetDataAsync(JqueryDatatableParam param);
     Task<bool> CreateAsync(StudentRequest model);
     Task<StudentResponse> GetByIdAsync(int id);
     Task<bool> UpdateAsync(int id, StudentRequest model);
