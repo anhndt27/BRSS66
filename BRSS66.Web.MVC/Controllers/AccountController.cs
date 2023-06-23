@@ -8,11 +8,13 @@ namespace BRSS66.Web.MVC.Controllers
     [AllowAnonymous]
     public class AccountController : Controller
     {
-        public readonly IAuthenticationService _authentication;
+        private readonly IAuthenticationService _authentication;
+        private readonly ILogger<AccountController> _logger;
 
-        public AccountController(IAuthenticationService authentication)
+        public AccountController(IAuthenticationService authentication, ILogger<AccountController> logger)
         {
             _authentication = authentication;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -24,19 +26,27 @@ namespace BRSS66.Web.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterDto model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var result = await _authentication.Register(model);
-
-                if (result)
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("index", "Home");
+                    var result = await _authentication.Register(model);
+
+                    if (result)
+                    {
+                        return RedirectToAction("index", "Home");
+                    }
+
+                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
                 }
 
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                return View(model);
             }
-
-            return View(model);
+            catch (Exception e)
+            {
+                _logger.LogError(e, "An error occurred while executing Register in AuthorController");
+                throw;
+            }
         }
 
         [HttpGet]
@@ -48,29 +58,45 @@ namespace BRSS66.Web.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginDto model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var result = await _authentication.Login(model);
-
-                if (result)
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Index", "Home");
+                    var result = await _authentication.Login(model);
+
+                    if (result)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
                 }
 
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                return View(model);
             }
-
-            return View(model);
+            catch (Exception e)
+            {
+                _logger.LogError(e, "An error occurred while executing Login in AuthorController");
+                throw;
+            }
         }
 
         public async Task<IActionResult> Logout()
         {
-            if (await _authentication.Logout())
+            try
             {
-                return RedirectToAction("Login", "Account");
-            }
+                if (await _authentication.Logout())
+                {
+                    return RedirectToAction("Login", "Account");
+                }
 
-            return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "An error occurred while executing Logout in AuthorController");
+                throw;
+            }
         }
     }
 }

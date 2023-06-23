@@ -1,4 +1,4 @@
-@model List<BRSS66.ApplicationCore.Entities.Course>
+@model List<BRSS66.ApplicationCore.ViewModels.Response.CourseResponse>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -35,24 +35,23 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Credits)
+                @Html.DisplayFor(modelItem => item.Credit)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Student)
-            </td>*@
             <td>
-                @*<a class="btn-outline-success btn-sm" href="/Enrollment/AddNewStudent/@item.Id">Add student</a> |*@
-                @*<a class="btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a class="btn-outline-primary btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a class="btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>|*@
+                @Html.DisplayFor(modelItem => item.Students)
+            </td>
+            <td>
+                <a class="btn-outline-success btn-sm" href="/Enrollment/AddStudent/@item.Id">Add student</a> |
+                <a class="btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn-outline-primary btn-sm" asp-action="Detail" asp-route-id="@item.Id">Details</a> |
+                <a class="btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>|
             </td>
         </tr>
     }
     </tbody>
 </table>
-@*
+
 <a class="btn btn-primary btn-sm" data-mdb-toggle="modal" data-mdb-target="#exampleModal">Match Course & Student </a>
-*@
 
 
 @section Scripts{

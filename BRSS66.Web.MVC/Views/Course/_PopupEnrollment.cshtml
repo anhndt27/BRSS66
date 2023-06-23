@@ -1,0 +1,32 @@
+@model BRSS66.ApplicationCore.ViewModels.Request.EnrollmentRequest
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-controller="Course" asp-action="AddUseModal">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    @*<input type="hidden" asp-for="model2.CourseId"/>*@
+                    <div class="form-group">
+                        <label asp-for="CourseId" class="control-label"></label>
+                        <input asp-for="CourseId" class="form-control"/>
+                        <span asp-validation-for="CourseId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StudentId" class="control-label"></label>
+                        <input asp-for="StudentId" class="form-control"/>
+                        <span asp-validation-for="StudentId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary"/>
+                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

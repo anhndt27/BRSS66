@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace BRSS66.ApplicationCore.Models;
+namespace BRSS66.ApplicationCore.ViewModels;
 
 public class UserInformation
 {

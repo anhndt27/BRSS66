@@ -1,5 +1,3 @@
-using BRSS66.ApplicationCore.Models;
-
 namespace BRSS66.ApplicationCore.Interfaces.IServices;
 
 public interface IUserService

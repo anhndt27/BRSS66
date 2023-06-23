@@ -23,7 +23,6 @@
 
     <ItemGroup>
       <Folder Include="Views\Account\" />
-      <Folder Include="Views\Course\" />
       <Folder Include="Views\Enrollment\" />
     </ItemGroup>
 

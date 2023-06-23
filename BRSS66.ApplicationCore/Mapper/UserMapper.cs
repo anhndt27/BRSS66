@@ -1,5 +1,5 @@
 using BRSS66.ApplicationCore.Entities;
-using BRSS66.ApplicationCore.Models;
+using BRSS66.ApplicationCore.ViewModels;
 
 namespace BRSS66.ApplicationCore.Mapper;
 

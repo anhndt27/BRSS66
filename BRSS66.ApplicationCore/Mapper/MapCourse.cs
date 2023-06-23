@@ -20,9 +20,34 @@ public static class MapCourse
     {
         CourseResponse courseResponse = new CourseResponse()
         {
-            Tittle = model.Title,
-            Credit = model.Credits
+            Id = model.Id,
+            Title = model.Title,
+            Credit = model.Credits,
+            Students = model.Enrollments!.Select(e => new StudentResponse
+            {
+                Id = e.Student!.Id,
+                Name = e.Student.Name,
+                Code = e.Student.Code
+                
+
+            })
         };
         return courseResponse;
+    }
+
+    public static IQueryable<CourseResponse> MapListCourseDto(this IQueryable<Course> model)
+    {
+        return model.Select(c => new CourseResponse
+        {
+            Id = c.Id,
+            Title = c.Title,
+            Credit = c.Credits,
+            Students = c.Enrollments!.Select(e => new StudentResponse
+            {
+                Id = e.Student!.Id,
+                Name = e.Student.Name,
+                Code = e.Student.Code,
+            })
+        });
     }
 }

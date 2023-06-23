@@ -3,7 +3,8 @@ using BRSS66.ApplicationCore.Entities;
 using BRSS66.ApplicationCore.Interfaces.IRepositorys;
 using BRSS66.ApplicationCore.Interfaces.IServices;
 using BRSS66.ApplicationCore.Mapper;
-using BRSS66.ApplicationCore.Models;
+using BRSS66.ApplicationCore.ViewModels;
+using BRSS66.ApplicationCore.ViewModels.Response;
 using Microsoft.AspNetCore.Identity;
 
 namespace BRSS66.ApplicationCore.DomainService;

@@ -9,98 +9,82 @@ namespace BRSS66.Infrastructure.Services;
 
 public class CourseService : ICourseServices
 {
+    private readonly IEnrollmentRepository _enrollmentRepository;
     private readonly ICourseRepository _courseRepository;
 
-    public CourseService(ICourseRepository courseRepository)
+    public CourseService(ICourseRepository courseRepository, IEnrollmentRepository enrollmentRepository)
     {
+        _enrollmentRepository = enrollmentRepository;
         _courseRepository = courseRepository;
     }
 
-    public async Task<List<Course>> Get()
+    public async Task<List<CourseResponse>> Get()
     {
-        return await _courseRepository.Get();
+        var lstCourse = await _courseRepository.Get();
+        var mapLst = lstCourse.AsQueryable().MapListCourseDto();
+        return mapLst.ToList();
     }
 
     public async Task<bool> CreateAsync(CourseRequest model)
     {
-        try
+        if (model == null)
         {
-            if (model == null)
-            {
-                throw new Exception("Course is required");
-            }
+            throw new Exception("Course is required");
+        }
 
-            Course course = model.MapToCoures();
-            await _courseRepository.Add(course);
-            return true;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        Course course = model.MapToCoures();
+        await _courseRepository.Add(course);
+        return true;
     }
 
     public async Task<CourseResponse> GetByIdAsync(int id)
     {
-        try
+        var resCourse = await _courseRepository.Get(id);
+        if (resCourse == null)
         {
-            var resCourse = await _courseRepository.Get(id);
-            if (resCourse == null)
-            {
-                throw new Exception($"Course id:{id} not found");
-            }
+            throw new Exception($"Course id:{id} not found");
+        }
 
-            return resCourse.MapToCourseResponse();
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        return resCourse.MapToCourseResponse();
     }
 
     public async Task<bool> UpdateAsync(int id, CourseRequest model)
     {
-        try
+        if (model == null)
         {
-            if (model == null)
-            {
-                throw new Exception("Course is required");
-            }
-            var resCourse = await _courseRepository.Get(id);
-            if (resCourse == null)
-            {
-                throw new Exception($"Course id:{id} not found");
-            }
+            throw new Exception("Course is required");
+        }
 
-            await _courseRepository.Update(model.MapToCoures());
-            return true;
-        }
-        catch (Exception e)
+        var resCourse = await _courseRepository.Get(id);
+        if (resCourse == null)
         {
-            Console.WriteLine(e);
-            throw;
+            throw new Exception($"Course id:{id} not found");
         }
+
+        await _courseRepository.Update(model.MapToCoures());
+        return true;
     }
 
     public async Task<bool> DeleteAsync(int id)
     {
-        try
+        var resCourse = await _courseRepository.Get(id);
+        if (resCourse == null)
         {
-            var resCourse = await _courseRepository.Get(id);
-            if (resCourse == null)
-            {
-                throw new Exception($"Course id:{id} not found");
-            }
+            throw new Exception($"Course id:{id} not found");
+        }
 
-            await _courseRepository.Delete(resCourse);
-            return true;
-        }
-        catch (Exception e)
+        await _courseRepository.Delete(resCourse);
+        return true;
+    }
+
+    public async Task<bool> AddStudentToCourse(int courseId, int studentId)
+    {
+        var entity = new Enrollment
         {
-            Console.WriteLine(e);
-            throw;
-        }
+            StudentId = studentId,
+            CourseId = courseId,
+        };
+        await _enrollmentRepository.Add(entity);
+        return true;
     }
 }

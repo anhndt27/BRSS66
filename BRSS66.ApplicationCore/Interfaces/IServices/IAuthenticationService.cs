@@ -1,4 +1,3 @@
-using BRSS66.ApplicationCore.Models;
 using BRSS66.ApplicationCore.ViewModels.Request;
 
 namespace BRSS66.ApplicationCore.Interfaces.IServices;

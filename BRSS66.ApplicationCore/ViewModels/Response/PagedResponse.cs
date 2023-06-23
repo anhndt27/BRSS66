@@ -1,4 +1,4 @@
-namespace BRSS66.ApplicationCore.Models;
+namespace BRSS66.ApplicationCore.ViewModels.Response;
 
 public class PagedResponse<T>
 {

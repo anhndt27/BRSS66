@@ -22,7 +22,12 @@ public static class MapStudent
         {
             Name = model.Name,
             Code = model.Code,
-            Course = string.Join(", ", model.Enrollments!.Select(e => e.Course!.Title)),
+            /*Course = model.Enrollments!.Select(c => new CourseResponse
+            {
+                Id = c.Course!.Id,
+                Title = c.Course.Title,
+                Credit = c.Course.Credits
+            }),*/
             CreatedAt = model.CreatedAt,
             UpdatedAt = model.UpdatedAt
         };
@@ -36,7 +41,12 @@ public static class MapStudent
             Id = s.Id,
             Name = s.Name,
             Code = s.Code,
-            Course = string.Join(", ", s.Enrollments!.Select(e => e.Course!.Title))
+            Course = s.Enrollments!.Select(e => new CourseResponse
+            {
+                Id = e.Course!.Id,
+                Title = e.Course.Title,
+                Credit = e.Course.Credits
+            })
         });
     }
 }

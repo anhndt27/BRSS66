@@ -2,7 +2,6 @@ using BRSS66.ApplicationCore.Entities;
 using BRSS66.ApplicationCore.Interfaces.IRepositorys;
 using BRSS66.ApplicationCore.Interfaces.IServices;
 using BRSS66.ApplicationCore.Mapper;
-using BRSS66.ApplicationCore.Models;
 using BRSS66.ApplicationCore.ViewModels.Request;
 using BRSS66.ApplicationCore.ViewModels.Response;
 
@@ -17,107 +16,64 @@ public class StudentService : IStudentServices
         _studentRepository = studentRepository;
     }
 
-    public async Task<(List<StudentResponse>, int)> GetDataAsync(JqueryDatatableParam param)
+    public async Task<PagedResponse<StudentResponse>> GetDataAsync(DataTablesRequest param)
     {
-        try
-        {
-            var ltsStudents = await _studentRepository.GetPaging(param);
-            //List<StudentResponse> ltsStudentDto = ltsStudents.Item1.Select(s => s.MapToStudentResponse()).ToList();
-            //IQueryable<StudentResponse> lts = ltsStudents.Item1.AsQueryable().MapListStudentDto();
-            return (ltsStudents.Item1,ltsStudents.Item2);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        var ltsStudents = await _studentRepository.GetPaging(param);
+        //List<StudentResponse> ltsStudentDto = ltsStudents.Item1.Select(s => s.MapToStudentResponse()).ToList();
+        //IQueryable<StudentResponse> lts = ltsStudents.Item1.AsQueryable().MapListStudentDto();
+        return (ltsStudents);
     }
-    
 
-   
+
     public async Task<bool> CreateAsync(StudentRequest model)
     {
-        try
+        if (model == null)
         {
-            if (model == null)
-            {
-                throw new Exception("Student is required");
-            }
+            throw new Exception("Student is required");
+        }
 
-            Student student = model.MapToStudent();
-            await _studentRepository.Add(student);
-            return true;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        Student student = model.MapToStudent();
+        await _studentRepository.Add(student);
+        return true;
     }
 
     public async Task<StudentResponse> GetByIdAsync(int id)
     {
-        try
+        var resStudent = await _studentRepository.Get(id);
+        if (resStudent == null)
         {
-            var resStudent = await _studentRepository.Get(id);
-            if (resStudent == null)
-            {
-                throw new Exception($"Student id:{id} not found");
-            }
+            throw new Exception($"Student id:{id} not found");
+        }
 
-            return resStudent.MapToStudentResponse();
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        return resStudent.MapToStudentResponse();
     }
 
     public async Task<bool> UpdateAsync(int id, StudentRequest model)
     {
-        try
+        if (model == null)
         {
-            if (model == null)
-            {
-                throw new Exception("Student is required");
-            }
-
-            var resStudent = await _studentRepository.Get(id);
-            if (resStudent == null)
-            {
-                throw new Exception($"Student id:{id} not found");
-            }
-
-            await _studentRepository.Update(model.MapToStudent());
-            return true;
+            throw new Exception("Student is required");
         }
-        catch (Exception e)
+
+        var resStudent = await _studentRepository.Get(id);
+        if (resStudent == null)
         {
-            Console.WriteLine(e);
-            throw;
+            throw new Exception($"Student id:{id} not found");
         }
+
+        await _studentRepository.Update(model.MapToStudent());
+        return true;
     }
 
-    public async Task<bool> DeleteAsync(int id, StudentRequest model)
+    public async Task<bool> DeleteAsync(int id)
     {
-        try
+        var resStudent = await _studentRepository.Get(id);
+        if (resStudent == null)
         {
-            var resStudent = await _studentRepository.Get(id);
-            if (resStudent == null)
-            {
-                throw new Exception($"Student id:{id} not found");
-            }
+            throw new Exception($"Student id:{id} not found");
+        }
 
-            await _studentRepository.Delete(resStudent);
-            return true;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        await _studentRepository.Delete(resStudent);
+        return true;
     }
-    
-    
 }

@@ -16,23 +16,14 @@ public class AuthenticationService : IAuthenticationService
         _userManager = userManager;
         _signInManager = signInManager;
     }
-
-
+    
     public async Task<bool> Login(LoginDto model)
     {
-        try
-        {
-            var result = await _signInManager.PasswordSignInAsync(model.Email!, model.Password!, model.RememberMe, false);
+        var result = await _signInManager.PasswordSignInAsync(model.Email!, model.Password!, model.RememberMe, false);
 
-            if (result.Succeeded)
-            {
-                return true;
-            }
-        }
-        catch (Exception e)
+        if (result.Succeeded)
         {
-            Console.WriteLine(e);
-            throw;
+            return true;
         }
 
         return false;
@@ -40,27 +31,19 @@ public class AuthenticationService : IAuthenticationService
 
     public async Task<bool> Register(RegisterDto model)
     {
-        try
+        var user = new AppUser()
         {
-            var user = new AppUser()
-            {
-                UserName = model.Email,
-                Email = model.Email,
-            };
+            UserName = model.Email,
+            Email = model.Email,
+        };
 
-            var result = await _userManager.CreateAsync(user, model.Password!);
+        var result = await _userManager.CreateAsync(user, model.Password!);
 
-            if (result.Succeeded)
-            { 
-                await _signInManager.SignInAsync(user, isPersistent: false);
-
-                return true;
-            }
-        }
-        catch (Exception e)
+        if (result.Succeeded)
         {
-            Console.WriteLine(e);
-            throw;
+            await _signInManager.SignInAsync(user, isPersistent: false);
+
+            return true;
         }
 
         return false;
@@ -68,15 +51,7 @@ public class AuthenticationService : IAuthenticationService
 
     public async Task<bool> Logout()
     {
-        try
-        {
-            await _signInManager.SignOutAsync();
-            return true;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        await _signInManager.SignOutAsync();
+        return true;
     }
 }
