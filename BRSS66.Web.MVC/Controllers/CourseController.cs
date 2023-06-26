@@ -18,16 +18,27 @@ public class CourseController : Controller
     }
 
     // GET
-    public async Task<IActionResult> Index()
+    public IActionResult Index(DataTablesRequest param)
+    {
+        return View();
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> GetData(DataTablesRequest param)
     {
         try
         {
-            var lstcourse = await _courseServices.Get();
-            return View(lstcourse);
+            var course = await _courseServices.Get(param);
+            var returnObject = new
+            {
+                draw = param.Draw, recordsFiltered = course.TotalItems, recordsTotal = course.TotalItems,
+                data = course.Items
+            };
+            return Ok(returnObject);
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "An error occurred while executing GetData in CourseController");
+            _logger.LogError(e, "An error occurred while executing GetData in StudentController");
             throw;
         }
     }
@@ -134,8 +145,14 @@ public class CourseController : Controller
 
         return View(model);
     }
-
-
+    
+    public async Task<IActionResult> AddStudent([FromRoute] int id)
+    {
+        var temp = await  _courseServices.GetByIdAsync(id);
+        ViewBag.getTitleCourse = temp.Title!; 
+        return View();
+    }
+    
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddStudent([FromRoute] int id, string studentId)
@@ -155,10 +172,10 @@ public class CourseController : Controller
                 else ViewBag.Alert = $"{studentId} can't add to Course";
             }
         }
-        catch
+        catch(Exception e)
         {
-            ModelState.AddModelError("", "Unable to save changes. Try again.");
-            //ViewBag.Alerts = AlertsHelper.ShowAlert(Alerts.Danger, message: "lane Catch fix bug now");
+            _logger.LogError(e, "An error occurred while executing Create in StudentController");
+            throw;
         }
 
         return View();
@@ -184,5 +201,27 @@ public class CourseController : Controller
         }
 
         return RedirectToAction("Index", "Course");
+    }
+
+    public async Task<IActionResult> AddStudentSelect2([FromBody] EnrollmentRequest request)
+    {
+        try
+        {
+            foreach (var studentId in request.StudentIdAray)
+            {
+                var enrollment = new EnrollmentRequest()
+                {
+                    CourseId = request.CourseId,
+                    StudentId = studentId
+                };
+                await _courseServices.AddStudentToCourse(enrollment.CourseId, enrollment.StudentId);
+            }
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "An error occurred while executing Create in StudentController");
+            throw;
+        }
     }
 }

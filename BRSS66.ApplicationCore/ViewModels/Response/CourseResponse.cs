@@ -8,5 +8,4 @@ public class CourseResponse
     public IEnumerable<StudentResponse>? Students { get; set; }
     public string? Title { get; set; }
     public double? Credit { get; set; }
-    
 }

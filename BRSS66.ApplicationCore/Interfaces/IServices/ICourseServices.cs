@@ -6,7 +6,7 @@ namespace BRSS66.ApplicationCore.Interfaces.IServices;
 
 public interface ICourseServices
 {
-    Task<List<CourseResponse>> Get();
+    Task<PagedResponse<CourseResponse>> Get(DataTablesRequest param);
     Task<bool> CreateAsync(CourseRequest model);
     Task<CourseResponse> GetByIdAsync(int id);
     Task<bool> UpdateAsync(int id, CourseRequest model);

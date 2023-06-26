@@ -18,11 +18,10 @@ public class CourseService : ICourseServices
         _courseRepository = courseRepository;
     }
 
-    public async Task<List<CourseResponse>> Get()
+    public async Task<PagedResponse<CourseResponse>> Get(DataTablesRequest param)
     {
-        var lstCourse = await _courseRepository.Get();
-        var mapLst = lstCourse.AsQueryable().MapListCourseDto();
-        return mapLst.ToList();
+        var lstCourse = await _courseRepository.GetPaging(param);
+        return lstCourse;
     }
 
     public async Task<bool> CreateAsync(CourseRequest model)

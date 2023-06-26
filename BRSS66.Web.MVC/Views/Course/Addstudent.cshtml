@@ -1,12 +1,12 @@
 @model BRSS66.ApplicationCore.ViewModels.Request.EnrollmentRequest
 
 @{
-    ViewData["Title"] = "AddNewStudent";
+    ViewData["Title"] = "AddStudent";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Enrollment student to Course</h1>
-<h4>Course @ViewBag.getTitleCourse</h4>
+
 <hr/>
 <div class="row">
     <div class="col-md-12">
@@ -17,7 +17,8 @@
 </div>
 <div class="row shadow-inner">
     <div class="col-md-4">
-        <form asp-action="AddStudent">
+        <p><strong>Course @ViewBag.getTitleCourse</strong></p>
+        <form asp-action="Addstudent">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CourseId"/>
             <div class="form-group">

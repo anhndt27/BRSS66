@@ -21,7 +21,7 @@ public class StudentService : IStudentServices
         var ltsStudents = await _studentRepository.GetPaging(param);
         //List<StudentResponse> ltsStudentDto = ltsStudents.Item1.Select(s => s.MapToStudentResponse()).ToList();
         //IQueryable<StudentResponse> lts = ltsStudents.Item1.AsQueryable().MapListStudentDto();
-        return (ltsStudents);
+        return ltsStudents;
     }
 
 

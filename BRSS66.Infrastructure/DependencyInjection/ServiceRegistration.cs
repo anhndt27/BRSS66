@@ -19,7 +19,6 @@ public static class ServiceRegistration
         services.AddTransient(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
         //DI Service
         services.AddTransient<IStudentServices, StudentService>();
-        services.AddTransient<IEnrollmentServices, EnrollmentService>();
         services.AddTransient<ICourseServices, CourseService>();
         return services;
     }

@@ -23,14 +23,13 @@ public static class MapCourse
             Id = model.Id,
             Title = model.Title,
             Credit = model.Credits,
-            Students = model.Enrollments!.Select(e => new StudentResponse
+            /*Students = model.Enrollments!.Select(e => new StudentResponse
             {
                 Id = e.Student!.Id,
                 Name = e.Student.Name,
                 Code = e.Student.Code
-                
-
-            })
+            
+            })*/
         };
         return courseResponse;
     }
