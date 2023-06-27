@@ -2,6 +2,8 @@ using BRSS66.ApplicationCore.Interfaces.IServices;
 using BRSS66.ApplicationCore.ViewModels.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace BRSS66.Web.MVC.Controllers;
 
@@ -11,19 +13,22 @@ public class CourseController : Controller
     private readonly ICourseServices _courseServices;
     private readonly ILogger<CourseController> _logger;
 
+    
     public CourseController(ICourseServices courseServices, ILogger<CourseController> logger)
     {
         _courseServices = courseServices;
         _logger = logger;
+        
     }
 
-    // GET
+    [Route("/Course/Index")]
     public IActionResult Index(DataTablesRequest param)
     {
         return View();
     }
     
     [HttpPost]
+    [Route("/Course/GetData/")]
     public async Task<IActionResult> GetData(DataTablesRequest param)
     {
         try
@@ -42,7 +47,8 @@ public class CourseController : Controller
             throw;
         }
     }
-
+    
+    [Route("/Course/Detail/{id}")]
     public async Task<IActionResult> Detail(int id)
     {
         try
@@ -135,7 +141,8 @@ public class CourseController : Controller
             {
                 return RedirectToAction(nameof(Index), new { deleteFlag = true });
             }
-            else ViewBag.Alert = "Chị ong Nâu nâu nâu nâu";
+
+            ViewBag.Alert = "Chị ong Nâu nâu nâu nâu";
         }
         catch (Exception e)
         {
@@ -144,41 +151,6 @@ public class CourseController : Controller
         }
 
         return View(model);
-    }
-    
-    public async Task<IActionResult> AddStudent([FromRoute] int id)
-    {
-        var temp = await  _courseServices.GetByIdAsync(id);
-        ViewBag.getTitleCourse = temp.Title!; 
-        return View();
-    }
-    
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddStudent([FromRoute] int id, string studentId)
-    {
-        try
-        {
-            int[] intArray = studentId.Split(new char[] { ',', ' ', ';' }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(int.Parse).ToArray();
-
-            foreach (var stuId in intArray)
-            {
-                if (await _courseServices.AddStudentToCourse(id, stuId))
-                {
-                    ViewBag.Alert =
-                        $"Add new student has id = {studentId} to course!";
-                }
-                else ViewBag.Alert = $"{studentId} can't add to Course";
-            }
-        }
-        catch(Exception e)
-        {
-            _logger.LogError(e, "An error occurred while executing Create in StudentController");
-            throw;
-        }
-
-        return View();
     }
 
     [HttpPost]
@@ -202,26 +174,55 @@ public class CourseController : Controller
 
         return RedirectToAction("Index", "Course");
     }
+    
+    [Route("/Course/Select2Student/")]
+    public IActionResult Select2Student(int courseId)
+    {
+        string id = HttpContext.Request.Query["id"]!;
+        ViewBag.Id = id;
+        return View();
+    }
+    
+    [Route("/Course/Search/")]
+    public async Task<IActionResult> Search(string? term)
+    {
+        if (term == null)
+        {
+            return new JsonResult(await _courseServices.GetAll());
+        }
+        return new JsonResult(await _courseServices.Search(term));
+    }
 
-    public async Task<IActionResult> AddStudentSelect2([FromBody] EnrollmentRequest request)
+    [HttpPost]
+    public async Task<IActionResult> AddStudentSelect2(int[] ids, int courseId)
     {
         try
         {
-            foreach (var studentId in request.StudentIdAray)
+            foreach (var studentId in ids)
             {
-                var enrollment = new EnrollmentRequest()
+                if (await _courseServices.AddStudentToCourse(courseId, studentId))
                 {
-                    CourseId = request.CourseId,
-                    StudentId = studentId
-                };
-                await _courseServices.AddStudentToCourse(enrollment.CourseId, enrollment.StudentId);
+                    ViewBag.Alert =
+                        $"Add new student has id = {studentId} to course!";
+                }
+                else ViewBag.Alert = $"{studentId} can't add to Course";
             }
-            return Ok();
         }
-        catch (Exception e)
+        catch (DbUpdateException  e)  when (e.InnerException is SqlException innerException)
         {
             _logger.LogError(e, "An error occurred while executing Create in StudentController");
-            throw;
+            if (innerException.Number == 2627) // Lỗi violation of primary key constraint
+            {
+                ModelState.AddModelError(string.Empty, "Mã đăng ký đã tồn tại.");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Đã xảy ra lỗi khi lưu thông tin đăng ký.");
+            }
+
+            return RedirectToAction("Select2Student", "Course");
         }
+
+        return RedirectToAction("Index", "Course");
     }
 }

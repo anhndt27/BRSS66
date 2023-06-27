@@ -10,4 +10,5 @@ public class StudentResponse
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     public IEnumerable<CourseResponse>? Course { get; set; }
+    
 }

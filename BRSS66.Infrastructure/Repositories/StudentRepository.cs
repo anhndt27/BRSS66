@@ -92,5 +92,14 @@ public class StudentRepository : RepositoryBase<Student>, IStudentRepository
             Items = empList
         });
     }
-    
+
+    public async Task<List<Student>> Search(string term)
+    {
+        return await _context.Students!.Where(s => s.Name!.Contains(term)).ToListAsync();
+    }
+
+    public async Task<List<Student>> GetAll()
+    {
+        return await _context.Students!.ToListAsync();
+    }
 }

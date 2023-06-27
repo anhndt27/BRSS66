@@ -52,7 +52,7 @@
                { "data": "title", "name": "Title", "autoWidth": true },
                { "data": "credit", "name": "Credit", "autoWidth": true },
                { "data": "students", "name": "Students", "autoWidth": true, 
-                    "render": function (data, type, row) {
+                    "render": function (data) {
                             let courses = '';
                             data.forEach((item) => {
                                 courses += `<a href="/Student/Detail/${item.id}">${item.name}</a><br/>`;
@@ -64,9 +64,9 @@
                    "data": "id",
                    "width": "10%",
                    "render": function (data, type, row) {
-                       return `<a href="/Course/AddStudent/${data}" class='btn btn-primary'  data-id='" + row.id + "'>Add</a>`+
-                              `<a href="/Course/Detail/${data}" class='btn btn-primary'  data-id='" + row.id + "'>Details<i class='bi bi-eye'></i></a>`+
-                              `<a href="/Course/Update/${data}" class='btn btn-primary' style='margin-left: 10px ' data-id='" + row.id + "'>Update<i class='bi bi-pen'></i></i></a>`;
+                       return `<a href="/Course/Select2Student/?id=${row.id}" class='btn btn-primary'  data-id='" + row.id + "'>Add</a>`+
+                              `<a href="/Course/Detail/${data}" class='btn btn-primary' style='margin-left: 10px ' data-id='" + row.id + "'>Details<i class='bi bi-eye'></i></a>`+
+                              `<a href="/Course/Edit/${data}" class='btn btn-primary' style='margin-left: 10px ' data-id='" + row.id + "'>Edit<i class='bi bi-pen'></i></i></a>`;
                      }
                }
            ]

@@ -1,3 +1,4 @@
+using BRSS66.ApplicationCore.Entities;
 using BRSS66.ApplicationCore.ViewModels.Request;
 using BRSS66.ApplicationCore.ViewModels.Response;
 

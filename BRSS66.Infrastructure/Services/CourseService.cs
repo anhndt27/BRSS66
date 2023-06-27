@@ -11,11 +11,18 @@ public class CourseService : ICourseServices
 {
     private readonly IEnrollmentRepository _enrollmentRepository;
     private readonly ICourseRepository _courseRepository;
-
-    public CourseService(ICourseRepository courseRepository, IEnrollmentRepository enrollmentRepository)
+    private readonly IStudentRepository _studentRepository;
+    public CourseService(ICourseRepository courseRepository,
+        IEnrollmentRepository enrollmentRepository, IStudentRepository studentRepository)
     {
         _enrollmentRepository = enrollmentRepository;
         _courseRepository = courseRepository;
+        _studentRepository = studentRepository;
+    }
+                                   
+    public async Task<List<Course>> Get(string search)
+    {
+        return await _courseRepository.Get(search);
     }
 
     public async Task<PagedResponse<CourseResponse>> Get(DataTablesRequest param)
@@ -35,7 +42,7 @@ public class CourseService : ICourseServices
         await _courseRepository.Add(course);
         return true;
     }
-
+        
     public async Task<CourseResponse> GetByIdAsync(int id)
     {
         var resCourse = await _courseRepository.Get(id);
@@ -85,5 +92,15 @@ public class CourseService : ICourseServices
         };
         await _enrollmentRepository.Add(entity);
         return true;
+    }
+
+    public async Task<List<Student>> Search(string term)
+    {
+        return await _studentRepository.Search(term);
+    }
+
+    public async Task<List<Student>> GetAll()
+    {
+        return await _studentRepository.GetAll();
     }
 }

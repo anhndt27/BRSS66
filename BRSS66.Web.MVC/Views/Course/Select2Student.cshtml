@@ -1,0 +1,51 @@
+@{
+    ViewData["Title"] = "Select2Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Using Select2</h1>
+<div class="form-group">
+    @Html.Raw(@ViewBag.Alert)
+</div>
+<form asp-action="AddStudentSelect2">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    
+    <p>
+        <strong>Add student to Course: @ViewBag.getTitleCourse </strong>
+    </p>
+    <input type="hidden" value="@ViewBag.Id" name="courseId"/>
+    <select class="select2" id="select2" name="ids" style="width: 500px"></select>
+    <br/>
+    <input type="submit" value="Add" class="btn btn-primary">
+</form>
+
+
+@section Scripts
+{
+    <script>
+     var baseUrl = "http://localhost:5219";
+     var urlxhr = baseUrl + "/Course/Search";
+    $("#select2").select2({
+        placeholder: 'keyword...',
+        multiple: true,
+       ajax: {
+            type: 'Get',
+            dataType: 'json',
+            multiple: true,
+            url: urlxhr,
+            processResults: function (data){
+                console.log(data)
+                return {
+                    results: $.map(data, function (item){
+                        return {
+                            text: item.name,
+                            id: item.id
+                        }
+                    })
+                }
+            },
+       }         
+    });
+    
+    </script>
+}

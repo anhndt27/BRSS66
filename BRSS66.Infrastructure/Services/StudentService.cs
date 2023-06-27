@@ -16,6 +16,11 @@ public class StudentService : IStudentServices
         _studentRepository = studentRepository;
     }
 
+    public async Task<List<Student>> Get()
+    {
+        return await _studentRepository.Get();
+    }
+
     public async Task<PagedResponse<StudentResponse>> GetDataAsync(DataTablesRequest param)
     {
         var ltsStudents = await _studentRepository.GetPaging(param);
