@@ -23,6 +23,9 @@
     </div>
 </div>
 
+<div>
+    <a asp-action="Create" asp-controller="Course">Create New Course</a>
+</div>
 
 @section Scripts
 {
@@ -55,7 +58,7 @@
                     "render": function (data) {
                             let courses = '';
                             data.forEach((item) => {
-                                courses += `<a href="/Student/Detail/${item.id}">${item.name}</a><br/>`;
+                                courses += `<a href="/Student/Detail/${item.id}">${item.name}</a>, `;
                             });
                             return courses;
                         }

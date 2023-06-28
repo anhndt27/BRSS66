@@ -1,5 +1,3 @@
-using BRSS66.ApplicationCore.Entities;
-
 namespace BRSS66.ApplicationCore.ViewModels.Response;
 
 public class StudentResponse

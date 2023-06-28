@@ -101,13 +101,13 @@ public class CourseController : Controller
     // POST: CourseController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, CourseRequest entity)
+    public async Task<IActionResult> Edit(int id, CourseRequest model)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                if (await _courseServices.UpdateAsync(id, entity))
+                if (await _courseServices.UpdateAsync(id, model))
                 {
                     ViewBag.Alert = "Update Ok!";
                 }
@@ -127,7 +127,7 @@ public class CourseController : Controller
     public async Task<IActionResult> Delete(int id)
     {
         var res = await _courseServices.GetByIdAsync(id);
-        return View();
+        return View(res);
     }
 
     // POST: CourseController/Delete/5
@@ -150,7 +150,7 @@ public class CourseController : Controller
             throw;
         }
 
-        return View(model);
+        return View();
     }
 
     [HttpPost]

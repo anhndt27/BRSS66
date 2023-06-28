@@ -10,6 +10,7 @@ public static class MapStudent
     {
         Student student = new Student()
         {
+            Id = model.Id,
             Name = model.Name,
             Code = model.Code
         };
@@ -20,6 +21,7 @@ public static class MapStudent
     {
         StudentResponse studentResponse = new StudentResponse()
         {
+            Id = model.Id,
             Name = model.Name,
             Code = model.Code,
             /*Course = model.Enrollments!.Select(c => new CourseResponse

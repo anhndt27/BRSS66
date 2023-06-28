@@ -23,6 +23,9 @@
     </div>
 </div>
 
+<div>
+    <a asp-action="Create" asp-controller="Student">Create New Student</a>
+</div>
 
 @section Scripts
 {
@@ -55,7 +58,7 @@
                     "render": function (data, type, row) {
                             let courses = '';
                             data.forEach((item) => {
-                                courses += `<a href="/Course/Detail/${item.id}">${item.title}</a><br/>`;
+                                courses += `<a href="/Course/Detail/${item.id}">${item.title}</a>, `;
                             });
                             return courses;
                         }
@@ -65,7 +68,7 @@
                    "width": "10%",
                    "render": function (data, type, row) {
                        return `<a href="/Student/Detail/${data}" class='btn btn-primary'  data-id='" + row.id + "'>Details<i class='bi bi-eye'></i></a>`+
-                              `<a href="/Student/Update/${data}" class='btn btn-primary' style='margin-left: 10px ' data-id='" + row.id + "'>Update<i class='bi bi-pen'></i></i></a>`;
+                              `<a href="/Student/Edit/${data}" class='btn btn-primary' style='margin-left: 10px ' data-id='" + row.id + "'>Edit<i class='bi bi-pen'></i></i></a>`;
                      }
                }
            ]
